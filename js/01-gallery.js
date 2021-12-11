@@ -49,9 +49,16 @@ function onGalleryClick(event) {
   }
 
   refs.largeImg.src = event.target.dataset.source;
-  refs.largeImg.alt = event.target.alt
+  refs.largeImg.alt = event.target.alt;
   instance.show();
+}
+
+function onEscPress(event) {
+  if (event.code === 'Escape') {
+    instance.close();
+  }
 }
 
 galleryMarkupRendering(refs.gallery, galleryItems);
 refs.gallery.addEventListener('click', onGalleryClick);
+document.addEventListener('keydown', onEscPress);
