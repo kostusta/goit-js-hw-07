@@ -5,27 +5,19 @@ const refs = {
   gallery: document.querySelector('.gallery'),
 };
 
-function galleryItemMarkupCreate({ preview, original, description }) {
-  const galleryItem = document.createElement('a');
-  galleryItem.classList.add('gallery__item');
-  galleryItem.href = `${original}`;
-
-  const galleryImage = document.createElement('img');
-  galleryImage.classList.add('gallery__image');
-  galleryImage.src = `${preview}`;
-  galleryImage.alt = `${description}`;
-
-  galleryItem.append(galleryImage);
-
-  return galleryItem;
-}
-
-function galleryMarkupCreate(items) {
-  return items.map(galleryItemMarkupCreate);
+function galleryItemsMarkupCreate(items) {
+  return items
+    .map(item => {
+      return `
+    <a class="gallery__item" href="${item.original}">
+      <img class="gallery__image" src="${item.preview}" alt="${item.description}" />
+    </a>`;
+    })
+    .join('');
 }
 
 function galleryMarkuoRendering(markupContainer, items) {
-  return markupContainer.append(...galleryMarkupCreate(items));
+  markupContainer.innerHTML = galleryItemsMarkupCreate(items);
 }
 
 function onGalleryItemClick(event) {
