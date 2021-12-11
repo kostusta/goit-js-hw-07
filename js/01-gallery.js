@@ -44,7 +44,7 @@ function galleryMarkupRendering(markupContainer, items) {
 function onGalleryClick(event) {
   event.preventDefault();
 
-  if (event.target === refs.gallery) {
+  if (event.target !== document.querySelector('.gallery__image')) {
     return;
   }
 
