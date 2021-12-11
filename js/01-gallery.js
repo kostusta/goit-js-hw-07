@@ -37,8 +37,8 @@ function galleryMarkupCreate(items) {
   return items.map(galleryItemMarkupCreate);
 }
 
-function galleryMarkupRendering(element, items) {
-  return element.append(...galleryMarkupCreate(items));
+function galleryMarkupRendering(markupContainer, items) {
+  return markupContainer.append(...galleryMarkupCreate(items));
 }
 
 function onGalleryClick(event) {
